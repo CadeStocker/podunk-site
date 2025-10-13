@@ -85,19 +85,31 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   if (req.method === 'POST') {
     try {
+      console.log('Starting file upload process...')
+      console.log('Upload directory:', UPLOAD_DIR)
+      console.log('Upload directory exists:', fs.existsSync(UPLOAD_DIR))
+      
       const form = formidable({
         uploadDir: UPLOAD_DIR,
         keepExtensions: true,
         maxFileSize: 50 * 1024 * 1024, // 50MB limit
       })
 
+      console.log('Parsing form data...')
       const [fields, files] = await form.parse(req)
+      console.log('Form parsed. Files:', Object.keys(files))
+      console.log('Form parsed. Fields:', Object.keys(fields))
       
       const uploadedFile = Array.isArray(files.file) ? files.file[0] : files.file
       const category = Array.isArray(fields.category) ? fields.category[0] : fields.category
       const description = Array.isArray(fields.description) ? fields.description[0] : fields.description
 
+      console.log('Uploaded file:', uploadedFile ? 'Found' : 'Not found')
+      console.log('Category:', category)
+      console.log('Description:', description)
+
       if (!uploadedFile) {
+        console.error('No file in upload request')
         return res.status(400).json({ error: 'No file uploaded' })
       }
 
@@ -149,10 +161,16 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         },
       })
 
+      console.log('File uploaded successfully:', fileRecord.id)
       return res.status(201).json(fileRecord)
     } catch (error) {
       console.error('Error uploading file:', error)
-      return res.status(500).json({ error: 'Failed to upload file' })
+      console.error('Error details:', error instanceof Error ? error.message : String(error))
+      console.error('Error stack:', error instanceof Error ? error.stack : 'No stack trace')
+      return res.status(500).json({ 
+        error: 'Failed to upload file',
+        details: error instanceof Error ? error.message : String(error)
+      })
     }
   }
 
