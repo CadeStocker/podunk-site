@@ -8,6 +8,7 @@ import { db } from "@/lib/prisma"
 db.initializeDatabase().catch(console.error)
 
 export const authOptions = {
+  secret: process.env.NEXTAUTH_SECRET,
   providers: [
     CredentialsProvider({
       name: "Band Member Login",
