@@ -1,0 +1,165 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  /* Brand colors */
+  --podunk-blue: #13477B;
+  --podunk-yellow: #F9A72A;
+  --nav-bg: var(--podunk-yellow);
+  --nav-foreground: #000000;
+}
+
+:root {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Header / Navbar styles */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  background: var(--nav-bg);
+  color: var(--nav-foreground);
+  padding: 0.75rem 1rem;
+}
+
+.brand h2 {
+  margin: 0;
+  font-size: 1.125rem;
+}
+
+.logo-wrap {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  overflow: hidden;        /* crops the image to the circular wrapper */
+  background: transparent;
+}
+
+.logo {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  display: block;
+}
+
+/* accessible hidden text */
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.site-nav {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.nav-link {
+  color: var(--nav-foreground);
+  text-decoration: none;
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  transition: background 150ms ease, color 150ms ease, transform 150ms ease;
+  font-weight: 900;
+  font-size: 1.3rem;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+  background: rgba(0,0,0,0.06);
+  transform: translateY(-1px);
+}
+
+.site-footer {
+  background: var(--nav-bg);
+  color: var(--nav-foreground);
+  padding: 1rem;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+/* Band member grid */
+.band-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-bottom: 32px;
+  justify-items: center;
+}
+
+/* Responsive tweak: stack nav on small screens */
+@media (max-width: 640px) {
+  .site-header {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .brand {
+    display: flex;
+    justify-content: center;
+  }
+
+  .site-nav {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* Stack band members in single column on mobile */
+  .band-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Reset grid positioning on mobile */
+  .band-member-left,
+  .band-member-right {
+    grid-column: auto !important;
+  }
+}
+
+/* Desktop positioning for bottom row */
+.band-member-left {
+  grid-column: 1 / 2;
+}
+
+.band-member-right {
+  grid-column: 3 / 4;
+}
+
+/* Band member link hover effect */
+.band-member-link {
+  display: block;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.band-member-link:hover {
+  transform: scale(1.05);
+}

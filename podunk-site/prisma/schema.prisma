@@ -1,0 +1,141 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id              String    @id @default(cuid())
+  username        String    @unique
+  email           String    @unique
+  phone           String?
+  name            String
+  role            Role      @default(MEMBER)
+  status          UserStatus @default(PENDING)
+  passwordHash    String
+  emailVerified   DateTime?
+  phoneVerified   DateTime?
+  lastLogin       DateTime?
+  resetToken      String?
+  resetTokenExpiry DateTime?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  
+  // Relations
+  transactions    Transaction[]
+  files           File[]
+  emailCampaigns  EmailCampaign[]
+  
+  @@map("users")
+}
+
+model Transaction {
+  id          String            @id @default(cuid())
+  type        TransactionType
+  amount      Float
+  description String
+  category    String
+  date        DateTime
+  receiptUrl  String?
+  notes       String?
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
+  
+  // Relations
+  userId      String
+  user        User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@map("transactions")
+}
+
+model PasswordResetRequest {
+  id        String   @id @default(cuid())
+  email     String
+  token     String   @unique
+  expiresAt DateTime
+  used      Boolean  @default(false)
+  createdAt DateTime @default(now())
+  
+  @@map("password_reset_requests")
+}
+
+model File {
+  id          String    @id @default(cuid())
+  name        String
+  originalName String
+  mimeType    String
+  size        Int
+  category    String?   // e.g., "sheet-music", "recordings", "documents"
+  description String?
+  filePath    String    // Path to file on disk
+  uploadedBy  String
+  uploadedAt  DateTime  @default(now())
+  
+  // Relations
+  uploader    User      @relation(fields: [uploadedBy], references: [id], onDelete: Cascade)
+  
+  @@map("files")
+}
+
+enum Role {
+  ADMIN
+  MEMBER
+}
+
+enum UserStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+model MailingListSubscriber {
+  id          String    @id @default(cuid())
+  email       String    @unique
+  name        String?
+  subscribed  Boolean   @default(true)
+  subscribedAt DateTime @default(now())
+  unsubscribedAt DateTime?
+  unsubscribeToken String @unique @default(cuid())
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  
+  @@map("mailing_list_subscribers")
+}
+
+model EmailCampaign {
+  id          String    @id @default(cuid())
+  subject     String
+  content     String    // HTML content
+  plainText   String?   // Plain text version
+  sentAt      DateTime?
+  sentBy      String?   // User ID who sent it
+  recipientCount Int?    // Number of recipients
+  status      EmailStatus @default(DRAFT)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  
+  // Relations
+  sender      User?     @relation(fields: [sentBy], references: [id])
+  
+  @@map("email_campaigns")
+}
+
+enum TransactionType {
+  EXPENSE
+  REVENUE
+}
+
+enum EmailStatus {
+  DRAFT
+  SENT
+  FAILED
+}
