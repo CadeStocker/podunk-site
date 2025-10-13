@@ -192,7 +192,14 @@ export default function FileManager() {
   }
 
   return (
-    <div style={{ padding: '2rem', maxWidth: '1200px', margin: '0 auto' }}>
+    <div style={{ 
+      padding: '2rem', 
+      maxWidth: '1200px', 
+      margin: '0 auto',
+      backgroundColor: 'white',
+      borderRadius: '10px',
+      boxShadow: '0 2px 10px rgba(0,0,0,0.1)'
+    }}>
       <div style={{ marginBottom: '2rem' }}>
         <h1 style={{ fontSize: '2rem', fontWeight: 'bold', marginBottom: '1rem', color: '#1F2937' }}>
           📁 Band Files
