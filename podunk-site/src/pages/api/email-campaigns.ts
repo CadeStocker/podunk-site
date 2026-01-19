@@ -2,6 +2,11 @@ import { NextApiRequest, NextApiResponse } from 'next'
 import { prisma } from '../../lib/prisma'
 import { getServerSession } from 'next-auth/next'
 import { authOptions } from './auth/[...nextauth]'
+import { Resend } from 'resend'
+
+// Avoid referencing the global `process` identifier directly (which can cause TS errors when Node types are not installed).
+const _process: any = (globalThis as any).process ?? {};
+const resend = _process.env?.RESEND_API_KEY ? new Resend(_process.env.RESEND_API_KEY) : null
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
@@ -55,12 +60,49 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           return res.status(400).json({ error: 'No active subscribers found' })
         }
 
-        // Here you would integrate with an email service like SendGrid, Nodemailer, etc.
-        // For now, we'll just mark it as sent and log the emails that would be sent
-        console.log(`Would send email to ${subscribers.length} subscribers:`)
-        subscribers.forEach(subscriber => {
-          console.log(`- ${subscriber.email} (${subscriber.name || 'No name'})`)
-        })
+        // Send emails using Resend
+        if (!resend) {
+          console.log(`Would send email to ${subscribers.length} subscribers (Resend not configured)`)
+          subscribers.forEach((subscriber: any) => {
+            console.log(`- ${subscriber.email} (${subscriber.name || 'No name'})`)
+          })
+        } else {
+          try {
+            // Send emails in batches to avoid rate limits
+            const fromEmail = _process.env?.FROM_EMAIL || 'onboarding@resend.dev'
+            const unsubscribeUrl = `${_process.env?.NEXTAUTH_URL ?? ''}/api/mailing-list`
+            
+            // Send individual emails with personalization
+            const emailPromises = subscribers.map(async (subscriber: any) => {
+              const unsubscribeLink = `${unsubscribeUrl}?token=${subscriber.unsubscribeToken}`
+              
+              return resend.emails.send({
+                from: fromEmail,
+                to: subscriber.email,
+                subject: campaign.subject,
+                html: `
+                  ${campaign.content}
+                  <hr style="margin-top: 40px; border: none; border-top: 1px solid #eee;">
+                  <p style="font-size: 12px; color: #666;">
+                    You're receiving this email because you subscribed to Podunk Ramblers mailing list.
+                    <br>
+                    <a href="${unsubscribeLink}" style="color: #666;">Unsubscribe</a>
+                  </p>
+                `,
+                ...(campaign.plainText && { text: campaign.plainText })
+              })
+            })
+
+            await Promise.all(emailPromises)
+            console.log(`Successfully sent emails to ${subscribers.length} subscribers`)
+          } catch (emailError) {
+            console.error('Error sending emails:', emailError)
+            return res.status(500).json({ 
+              error: 'Failed to send some emails',
+              details: emailError instanceof Error ? emailError.message : 'Unknown error'
+            })
+          }
+        }
 
         // Update campaign status
         const updatedCampaign = await prisma.emailCampaign.update({

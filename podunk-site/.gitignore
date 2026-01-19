@@ -1,4 +1,7 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+**/*.md
+*/*.md
+*.md
 
 # Database files (contains sensitive user data)
 /data/*.json
