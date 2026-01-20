@@ -58,7 +58,7 @@ export default function SuttonOffGrid() {
             lineHeight: 1.6,
             marginBottom: "12px"
           }}>
-            <strong>Current Status:</strong> Living his best analog life
+            <strong>Current Status:</strong> Doing wizardly activities
           </p>
           <p style={{ 
             fontSize: "1rem", 
@@ -71,7 +71,7 @@ export default function SuttonOffGrid() {
             fontSize: "1rem", 
             lineHeight: 1.6
           }}>
-            <strong>Social Media Presence:</strong> 404 Not Found
+            <strong>Social Media Presence:</strong> Nah Bruh
           </p>
         </div>
 
