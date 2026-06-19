@@ -76,14 +76,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         return res.status(400).json({ error: 'Email or unsubscribe token required' })
       }
 
-      let whereClause: any = {}
-      if (token) {
-        whereClause.unsubscribeToken = token as string
-      } else {
-        whereClause.email = email as string
-      }
+      const whereClause: any = token
+        ? { unsubscribeToken: token as string }
+        : { email: email as string }
 
-      const subscriber = await prisma.mailingListSubscriber.update({
+      await prisma.mailingListSubscriber.update({
         where: whereClause,
         data: {
           subscribed: false,
