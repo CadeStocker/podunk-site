@@ -25,9 +25,12 @@ export default function AboutPage() {
       <h1 style={{ marginTop: 0, fontWeight: 900, fontSize: "1.6rem" }}>About Us</h1>
       <p>
         <br />
-        We're a 5 piece Bluegrass band based out of Columbia, SC playing a mix of traditional Bluegrass and modern Jamgrass.
+        We're a 6 piece Bluegrass band based out of Columbia, SC playing a mix of traditional and progressive bluegrass. Our group formed through weekly Jams at the University of South Carolina Bluegrass Club.
+        <br />
+
         <br />
         Our goal is to bring high-energy performances and fast pickin' to every show we play.
+        <br />
       </p>
 
       {/* Band member section */}
@@ -89,7 +92,7 @@ export default function AboutPage() {
             <h3 style={{ marginBottom: 8, fontSize: "1.2rem" }}>Sutton Jenkins</h3>
             <p style={{ fontWeight: "bold", margin: "8px 0", color: "#F9A72A" }}>Guitar, Vocals</p>
             <p style={{ fontSize: "0.9rem", lineHeight: 1.6 }}>
-                Sutton is a jazz studies major, bringing tasty licks and raw bodaciousness to his shredding. He comes all the way from Georgia.
+                Sutton is a jazz studies major from Georgia, bringing tasty licks and absolute bodaciousness to his Telecaster shredding.
             </p>
           </div>
 
@@ -119,7 +122,7 @@ export default function AboutPage() {
             <h3 style={{ marginBottom: 8, fontSize: "1.2rem" }}>Tripp Sponseller</h3>
             <p style={{ fontWeight: "bold", margin: "8px 0", color: "#F9A72A" }}>Banjo, Vocals</p>
             <p style={{ fontSize: "0.9rem", lineHeight: 1.6 }}>
-            Tripp plays both 3-finger and clawhammer styles of banjo. He is a true grasser from South Carolina.
+            Tripp is a truegrasser from South Carolina, scruggsmaxxing while singing with soul.
             </p>
           </div>
 
@@ -149,7 +152,35 @@ export default function AboutPage() {
             <h3 style={{ marginBottom: 8, fontSize: "1.2rem" }}>Thomas Johnson</h3>
             <p style={{ fontWeight: "bold", margin: "8px 0", color: "#F9A72A" }}>Bass</p>
             <p style={{ fontSize: "0.9rem", lineHeight: 1.6 }}>
-                Thomas "TJ" Johnson thumps the bass and keeps the band grounded with his steady rhythms. He hails from the lowcountry of South Carolina.
+                Thomas "TJ" Johnson from South Carolina thumps the big ole' bass and keeps the band grounded with his steady rhythms.
+            </p>
+          </div>
+
+          {/* Mac Tollefson */}
+          <div style={{ textAlign: "center" }}>
+            <a 
+              href=""
+              className="band-member-link"
+            >
+              <div style={{ 
+                width: "200px", 
+                height: "200px", 
+                margin: "0 auto 16px",
+                borderRadius: "50%",
+                overflow: "hidden",
+                background: "#ddd"
+              }}>
+                <img 
+                  src="/band-members/mac.png" 
+                  alt="Mac Tollefson"
+                  style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                />
+              </div>
+            </a>
+            <h3 style={{ marginBottom: 8, fontSize: "1.2rem" }}>Mac Tollefson</h3>
+            <p style={{ fontWeight: "bold", margin: "8px 0", color: "#F9A72A" }}>Fiddle</p>
+            <p style={{ fontSize: "0.9rem", lineHeight: 1.6 }}>
+                Mac is a fiddle shredlord from South Carolina, adding fiery fiddle solos and sweet melodies to the our sound.
             </p>
           </div>
 
@@ -179,7 +210,7 @@ export default function AboutPage() {
             <h3 style={{ marginBottom: 8, fontSize: "1.2rem" }}>Cade Stocker</h3>
             <p style={{ fontWeight: "bold", margin: "8px 0", color: "#F9A72A" }}>Guitar, Vocals</p>
             <p style={{ fontSize: "0.9rem", lineHeight: 1.6 }}>
-                Cade sings and flatpicks with fervor, bringing energy and harmony to the band's sound. He hails from South Carolina.
+                Cade flatpicks the acoustic guitar with swag and gusto. Hailing from South Carolina.
             </p>
           </div>
         </div>

@@ -43,7 +43,7 @@ export default function Home() {
           Welcome to Podunk Ramblers
         </h1>
         <p style={{ fontSize: "1.2rem", marginBottom: "1rem", lineHeight: 1.6 }}>
-          Combining our love for traditional Bluegrass and modern Jamgrass.
+          Combining our love for traditional and progressive bluegrass.
         </p>
         <p style={{ fontSize: "1rem", color: "#F9A72A" }}>
           Based in Columbia, SC
