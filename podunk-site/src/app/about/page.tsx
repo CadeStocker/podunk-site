@@ -177,7 +177,7 @@ export default function AboutPage() {
                 />
               </div>
             </a>
-            <h3 style={{ marginBottom: 8, fontSize: "1.2rem" }}>Mac Tollefson</h3>
+            <h3 style={{ marginBottom: 8, fontSize: "1.2rem" }}>Mac Tollefsen</h3>
             <p style={{ fontWeight: "bold", margin: "8px 0", color: "#F9A72A" }}>Fiddle</p>
             <p style={{ fontSize: "0.9rem", lineHeight: 1.6 }}>
                 Mac is a fiddle shredlord from South Carolina, adding fiery fiddle solos and sweet melodies to the our sound.
@@ -201,7 +201,7 @@ export default function AboutPage() {
                 background: "#ddd"
               }}>
                 <img 
-                  src="/band-members/cade2.png" 
+                  src="/band-members/cade3.png" 
                   alt="Cade Stocker"
                   style={{ width: "100%", height: "100%", objectFit: "cover" }}
                 />
