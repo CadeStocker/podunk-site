@@ -67,9 +67,16 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             console.log(`- ${subscriber.email} (${subscriber.name || 'No name'})`)
           })
         } else {
+          const fromEmail = _process.env?.FROM_EMAIL
+          if (!fromEmail) {
+            return res.status(500).json({
+              error: 'Email sender address not configured. Please set FROM_EMAIL environment variable.',
+              details: 'Without a verified FROM_EMAIL, emails cannot be delivered.'
+            })
+          }
+
           try {
             // Send emails in batches to avoid rate limits
-            const fromEmail = _process.env?.FROM_EMAIL || 'onboarding@resend.dev'
             const unsubscribeUrl = `${_process.env?.NEXTAUTH_URL ?? ''}/api/mailing-list`
             
             // Send individual emails with personalization

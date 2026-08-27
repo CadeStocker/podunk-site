@@ -222,14 +222,21 @@ export default function Home() {
               <div style={{ minHeight: "600px", background: "rgba(249, 167, 42, 0.1)", borderRadius: "12px", display: "flex", alignItems: "center", justifyContent: "center" }}>
                 <p style={{ color: "#F9A72A" }}>Loading...</p>
               </div>
+              <div style={{ minHeight: "600px", background: "rgba(249, 167, 42, 0.1)", borderRadius: "12px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <p style={{ color: "#F9A72A" }}>Loading...</p>
+              </div>
+              <div style={{ minHeight: "600px", background: "rgba(249, 167, 42, 0.1)", borderRadius: "12px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <p style={{ color: "#F9A72A" }}>Loading...</p>
+              </div>
             </>
           ) : (
             <>
               {/* Instagram Post 1 */}
               <div style={{ minHeight: "600px", display: "flex", alignItems: "flex-start" }}>
-                <blockquote 
-              className="instagram-media" 
-              data-instgrm-permalink="https://www.instagram.com/p/DOQ5i5AEaKo/?utm_source=ig_embed&amp;utm_campaign=loading"
+                <blockquote
+              className="instagram-media"
+              data-instgrm-captioned
+              data-instgrm-permalink="https://www.instagram.com/reel/DbeuedDNyqO/?utm_source=ig_embed&amp;utm_campaign=loading"
               data-instgrm-version="14"
               style={{
                 background: "#FFF",
@@ -248,9 +255,10 @@ export default function Home() {
 
           {/* Instagram Post 2 */}
           <div style={{ minHeight: "600px", display: "flex", alignItems: "flex-start" }}>
-            <blockquote 
-              className="instagram-media" 
-              data-instgrm-permalink="https://www.instagram.com/reel/DNlUyQsRVMv/?utm_source=ig_embed&amp;utm_campaign=loading"
+            <blockquote
+              className="instagram-media"
+              data-instgrm-captioned
+              data-instgrm-permalink="https://www.instagram.com/p/DccBbYyxpMv/?utm_source=ig_embed&amp;utm_campaign=loading"
               data-instgrm-version="14"
               style={{
                 background: "#FFF",
@@ -269,9 +277,10 @@ export default function Home() {
 
           {/* Instagram Post 3 */}
           <div style={{ minHeight: "600px", display: "flex", alignItems: "flex-start" }}>
-            <blockquote 
-              className="instagram-media" 
-              data-instgrm-permalink="https://www.instagram.com/reel/DKvQ0i2PLAN/?utm_source=ig_embed&amp;utm_campaign=loading"
+            <blockquote
+              className="instagram-media"
+              data-instgrm-captioned
+              data-instgrm-permalink="https://www.instagram.com/reel/DTJdnOmD3ch/?utm_source=ig_embed&amp;utm_campaign=loading"
               data-instgrm-version="14"
               style={{
                 background: "#FFF",
@@ -290,9 +299,10 @@ export default function Home() {
 
           {/* Instagram Post 4 */}
           <div style={{ minHeight: "600px", display: "flex", alignItems: "flex-start" }}>
-            <blockquote 
-              className="instagram-media" 
-              data-instgrm-permalink="https://www.instagram.com/reel/DKvRKfnvkZc/?utm_source=ig_embed&amp;utm_campaign=loading"
+            <blockquote
+              className="instagram-media"
+              data-instgrm-captioned
+              data-instgrm-permalink="https://www.instagram.com/p/DatPvORGAST/?utm_source=ig_embed&amp;utm_campaign=loading"
               data-instgrm-version="14"
               style={{
                 background: "#FFF",
@@ -311,9 +321,10 @@ export default function Home() {
 
           {/* Instagram Post 5 */}
           <div style={{ minHeight: "600px", display: "flex", alignItems: "flex-start" }}>
-            <blockquote 
-              className="instagram-media" 
-              data-instgrm-permalink="https://www.instagram.com/reel/DL2h9EpRS1-/?utm_source=ig_embed&amp;utm_campaign=loading"
+            <blockquote
+              className="instagram-media"
+              data-instgrm-captioned
+              data-instgrm-permalink="https://www.instagram.com/reel/DZAitfqO_OF/?utm_source=ig_embed&amp;utm_campaign=loading"
               data-instgrm-version="14"
               style={{
                 background: "#FFF",
@@ -332,10 +343,10 @@ export default function Home() {
 
           {/* Instagram Post 6 */}
           <div style={{ minHeight: "600px", display: "flex", alignItems: "flex-start" }}>
-            <blockquote 
-              className="instagram-media" 
+            <blockquote
+              className="instagram-media"
               data-instgrm-captioned
-              data-instgrm-permalink="https://www.instagram.com/reel/DTV9L2Xj38_/?utm_source=ig_embed&amp;utm_campaign=loading"
+              data-instgrm-permalink="https://www.instagram.com/p/DUlRVQGEY9U/?utm_source=ig_embed&amp;utm_campaign=loading"
               data-instgrm-version="14"
               style={{
                 background: "#FFF",

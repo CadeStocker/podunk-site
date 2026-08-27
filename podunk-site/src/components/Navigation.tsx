@@ -29,6 +29,7 @@ export default function Navigation() {
         <a className="nav-link" href="/calendar">Calendar</a>
         <a className="nav-link" href="/about">About</a>
         <a className="nav-link" href="/contact">Contact</a>
+        <a className="nav-link" href="/newsletter">Newsletter</a>
         <span className="nav-link" style={{ opacity: 0.5 }}>Loading...</span>
       </nav>
     )
@@ -40,6 +41,7 @@ export default function Navigation() {
       <a className="nav-link" href="/calendar">Calendar</a>
       <a className="nav-link" href="/about">About</a>
       <a className="nav-link" href="/contact">Contact</a>
+      <a className="nav-link" href="/newsletter">Newsletter</a>
       
       {session ? (
         <div ref={dropdownRef} style={{ position: 'relative', display: 'inline-block' }}>

@@ -91,7 +91,9 @@ export default function MailingListSignup({ compact = false }: MailingListSignup
                   padding: '0.75rem',
                   border: '1px solid #D1D5DB',
                   borderRadius: '4px',
-                  fontSize: '0.9rem'
+                  fontSize: '0.9rem',
+                  color: '#333',
+                  backgroundColor: '#fff'
                 }}
               />
               <button
@@ -181,12 +183,12 @@ export default function MailingListSignup({ compact = false }: MailingListSignup
       ) : (
         <form onSubmit={handleSubmit}>
           <div style={{ marginBottom: '1rem' }}>
-            <label style={{ 
-              display: 'block', 
-              fontSize: '0.9rem', 
-              fontWeight: '500', 
-              color: '#374151', 
-              marginBottom: '0.5rem' 
+            <label style={{
+              display: 'block',
+              fontSize: '0.9rem',
+              fontWeight: '500',
+              color: '#374151',
+              marginBottom: '0.5rem'
             }}>
               Name (optional)
             </label>
@@ -201,7 +203,9 @@ export default function MailingListSignup({ compact = false }: MailingListSignup
                 border: '1px solid #D1D5DB',
                 borderRadius: '6px',
                 fontSize: '1rem',
-                transition: 'border-color 0.2s'
+                transition: 'border-color 0.2s',
+                color: '#333',
+                backgroundColor: '#fff'
               }}
               onFocus={(e) => e.target.style.borderColor = '#F9A72A'}
               onBlur={(e) => e.target.style.borderColor = '#D1D5DB'}
@@ -209,12 +213,12 @@ export default function MailingListSignup({ compact = false }: MailingListSignup
           </div>
 
           <div style={{ marginBottom: '1.5rem' }}>
-            <label style={{ 
-              display: 'block', 
-              fontSize: '0.9rem', 
-              fontWeight: '500', 
-              color: '#374151', 
-              marginBottom: '0.5rem' 
+            <label style={{
+              display: 'block',
+              fontSize: '0.9rem',
+              fontWeight: '500',
+              color: '#374151',
+              marginBottom: '0.5rem'
             }}>
               Email Address *
             </label>
@@ -230,7 +234,9 @@ export default function MailingListSignup({ compact = false }: MailingListSignup
                 border: '1px solid #D1D5DB',
                 borderRadius: '6px',
                 fontSize: '1rem',
-                transition: 'border-color 0.2s'
+                transition: 'border-color 0.2s',
+                color: '#333',
+                backgroundColor: '#fff'
               }}
               onFocus={(e) => e.target.style.borderColor = '#F9A72A'}
               onBlur={(e) => e.target.style.borderColor = '#D1D5DB'}
